@@ -1,0 +1,92 @@
+{
+  "theme": "dark",
+  "archetype": "7 (Electric & Neon)",
+  "language": "de",
+  "typography": {
+    "fonts": {
+      "heading": "Orbitron, sans-serif",
+      "body": "Rajdhani, sans-serif",
+      "mono": "JetBrains Mono, monospace"
+    },
+    "hierarchy": {
+      "h1": "text-4xl sm:text-5xl tracking-widest uppercase text-cyan-400 drop-shadow-[0_0_10px_rgba(0,240,255,0.8)]",
+      "h2": "text-2xl sm:text-3xl tracking-widest uppercase text-cyan-400",
+      "h3": "text-xl tracking-wider text-cyan-300",
+      "body": "text-base tracking-wide text-cyan-100/70",
+      "labels": "text-xs tracking-[0.3em] uppercase text-cyan-500",
+      "logs": "text-xs font-mono text-cyan-400"
+    }
+  },
+  "colors": {
+    "background": {
+      "main": "#030712",
+      "panel": "rgba(7, 18, 34, 0.6)",
+      "panel_hover": "rgba(7, 18, 34, 0.8)"
+    },
+    "primary": {
+      "base": "#00F0FF",
+      "glow": "rgba(0, 240, 255, 0.6)",
+      "dim": "rgba(0, 240, 255, 0.15)"
+    },
+    "secondary": {
+      "base": "#3B82F6",
+      "glow": "rgba(59, 130, 246, 0.5)"
+    },
+    "alert": {
+      "warning": "#F59E0B",
+      "danger": "#EF4444",
+      "success": "#10B981"
+    },
+    "surface": {
+      "border": "rgba(0, 240, 255, 0.3)",
+      "glass": "bg-black/40 backdrop-blur-md"
+    }
+  },
+  "spacing_and_layout": {
+    "strategy": "Control Room Grid",
+    "dashboard_grid": "grid grid-cols-1 lg:grid-cols-12 gap-6 p-6",
+    "panels": {
+      "main_3d_view": "lg:col-span-8 lg:row-span-2 h-[600px] lg:h-full relative border border-cyan-500/30 bg-black/50 overflow-hidden",
+      "side_panel": "lg:col-span-4 flex flex-col gap-4",
+      "widget": "p-4 border border-cyan-500/20 bg-black/40 backdrop-blur-sm shadow-[0_0_15px_rgba(0,240,255,0.05)_inset]"
+    }
+  },
+  "visual_effects": {
+    "borders": "1px solid rgba(0, 240, 255, 0.4)",
+    "glow": "box-shadow: 0 0 10px rgba(0,240,255,0.2), inset 0 0 20px rgba(0,240,255,0.05)",
+    "scanlines": "repeating-linear-gradient(to bottom, transparent 0, transparent 2px, rgba(0,240,255,0.05) 2px, rgba(0,240,255,0.05) 4px)",
+    "clip_path": "polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%)"
+  },
+  "components_strategy": {
+    "panels": "Use pure HTML/Tailwind with clip-paths and custom CSS for HUD panels instead of standard Shadcn cards to ensure Tron aesthetic.",
+    "buttons": "Flat background, sharp edges, cyan border, hover effects with text-shadow and inset box-shadow. No border-radius.",
+    "charts": "Recharts with transparent backgrounds, cyan lines, and grid stroke opacity 0.1.",
+    "icons": "lucide-react, styled with cyan color and subtle drop-shadow.",
+    "3d_scene": "react-three-fiber. Use <Points> for Heatmap/Object detection. Use wireframe materials for router/devices. Black/transparent background."
+  },
+  "media": {
+    "images": {
+      "login_background": {
+        "url": "https://static.prod-images.emergentagent.com/jobs/092d8b15-cdce-4724-8442-1a00877b3092/images/c8db60caab62f0e7a77b3866c499a82fd17c0dc6575cac30a0735a63871f998e.png",
+        "description": "Pitch-black background with deep blue and cyan glowing digital grid lines, suitable for the admin login screen."
+      },
+      "router_blueprint": {
+        "url": "https://static.prod-images.emergentagent.com/jobs/092d8b15-cdce-4724-8442-1a00877b3092/images/64f20511c62ecbbe495527f989b13cac2e932e39a8ebf23436e8b3f919118410.png",
+        "description": "Futuristic glowing cyan wireframe of a TP-Link Archer router. Can be used in the 'Connection Detection' screen or as a 2D fallback."
+      }
+    }
+  },
+  "instructions_to_main_agent": [
+    "Ensure the entire application is in German (e.g., 'Systemsteuerung', 'Signalstärke', 'Geräteverwaltung').",
+    "Use standard JavaScript (.js/.jsx), NOT TypeScript.",
+    "Install and use 'three', '@react-three/fiber' and '@react-three/drei' for the central 3D room visualization.",
+    "Implement the login screen first (Admin Login). It should feel like accessing a secure military/hacker gateway.",
+    "Simulate an 'auto-detect' sequence for the 'TP-Link Archer C6' via cable connection before showing the dashboard.",
+    "Dashboard must include 3D holographic room visualization combining a heatmap overlay and point cloud for detected objects.",
+    "Include a 'Router Control Panel' (WiFi settings, restart), 'Signal Analytics' (RSSI charts), and 'Object Detection Console' (logs).",
+    "Apply 'data-testid' to all interactive elements using kebab-case role-based names (e.g., 'admin-login-button', 'router-restart-button').",
+    "Do NOT use standard rounded corners (rounded-lg). Use sharp corners, clip-paths, and glowing borders to match the Tron/Sci-Fi aesthetic.",
+    "Add 'Orbitron' and 'Rajdhani' via Google Fonts in index.html.",
+    "Avoid generic dashboards - strictly adhere to the high-tech, futuristic Command Center vibes."
+  ]
+}
