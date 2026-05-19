@@ -53,8 +53,8 @@ export default function Dashboard() {
         setDevices(d.data.devices);
         setStatus(st.data);
         setLog(lg.data.log);
-      } catch {
-        /* ignore */
+      } catch (e) {
+        console.warn("dashboard load failed:", e?.message || e);
       }
     };
     load();
@@ -78,13 +78,13 @@ export default function Dashboard() {
           setLive(m.summary);
           setSnap((prev) => ({ ...prev, objects: m.objects }));
         }
-      } catch {
-        /* ignore */
+      } catch (e) {
+        console.warn("ws message parse failed:", e?.message || e);
       }
     };
     ws.onerror = () => {};
     return () => {
-      try { ws.close(); } catch { /* ignore */ }
+      try { ws.close(); } catch (e) { console.warn("ws close failed:", e?.message || e); }
     };
   }, []);
 

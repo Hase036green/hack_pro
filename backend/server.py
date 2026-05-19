@@ -273,10 +273,11 @@ async def router_connect(body: RouterConnectBody, user=Depends(get_current_user)
     reachable = True
     if not body.demo_mode:
         try:
-            async with httpx.AsyncClient(timeout=2.0, verify=False) as c:
+            async with httpx.AsyncClient(timeout=2.0) as c:
                 r = await c.get(f"http://{body.host}/")
                 reachable = r.status_code < 500
-        except Exception:
+        except Exception as e:
+            logger.info(f"router live reach failed for {body.host}: {e}")
             reachable = False
     ROUTER_STATE["connected"] = True
     ROUTER_STATE["started_at"] = time.time()

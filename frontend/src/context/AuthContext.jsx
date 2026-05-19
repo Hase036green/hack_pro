@@ -11,7 +11,8 @@ export function AuthProvider({ children }) {
     try {
       const { data } = await api.get("/auth/me");
       setUser(data);
-    } catch {
+    } catch (e) {
+      console.warn("auth/me failed:", e?.message || e);
       setUser(false);
     } finally {
       setLoading(false);
@@ -42,8 +43,9 @@ export function AuthProvider({ children }) {
   const logout = async () => {
     try {
       await api.post("/auth/logout");
-    } catch {
-      /* ignore */
+    } catch (e) {
+      // server-side logout best-effort; local logout proceeds regardless
+      console.warn("logout api failed:", e?.message || e);
     }
     setToken(null);
     setUser(false);

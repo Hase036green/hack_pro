@@ -36,9 +36,9 @@ export default function Security() {
           setLive(m.summary);
           setObjects(m.objects);
         }
-      } catch { /* ignore */ }
+      } catch (err) { console.warn("ws message parse failed:", err?.message || err); }
     };
-    return () => { try { ws.close(); } catch { /* ignore */ } };
+    return () => { try { ws.close(); } catch (err) { console.warn("ws close failed:", err?.message || err); } };
   }, []);
 
   if (user === false) return <Navigate to="/login" replace />;
